@@ -11,6 +11,7 @@ def get_list():
     r = requests.get(BASE_URL+ENDPOINT)
     print (r.status_code)
     data =r.json()
+    print(data)
     print (type(data)) # type(json.dumps(data))
     for a in data:
         # print (a['id'])
@@ -26,9 +27,9 @@ def get_list():
 def create_update():
     new_data = {
         'user':1,
-        'content':'Update from test script'
+        'content':'Some more Update from test script'
     }
-    r =requests.delete(BASE_URL+ENDPOINT,data=new_data)
+    r =requests.post(BASE_URL+ENDPOINT +"1/",data=new_data)
     print (r.headers)
     print(r.status_code)
     if r.status_code == requests.codes.ok:
