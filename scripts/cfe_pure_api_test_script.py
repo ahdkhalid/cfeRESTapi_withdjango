@@ -30,7 +30,7 @@ print(get_list())
 def create_update():
     new_data = {
         'user':1,
-        'content':'Some more Update from test script'
+        'content':'more testing after upgrading django'
     }
     r =requests.post(BASE_URL+ENDPOINT,data=json.dumps(new_data))
     print (r.headers)
@@ -43,8 +43,8 @@ def create_update():
 
 def do_obj_update():
     new_data = {
-        'id':5,
-        'content':' awesomee - changed from script'
+        'id':122,
+        'content':' tesging after upgrade, modif - changed from script'
     }
     r =requests.put(BASE_URL+ENDPOINT,data=json.dumps(new_data))
     # new_data = {
@@ -63,7 +63,7 @@ def do_obj_update():
 
 def do_obj_delete():
     new_data = {
-        'id':5
+        'id':10
     }
     r =requests.delete(BASE_URL+ENDPOINT, data = json.dumps(new_data))
     # to delete from detail view we just need this

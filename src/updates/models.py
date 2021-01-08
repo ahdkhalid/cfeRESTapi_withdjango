@@ -26,7 +26,7 @@ class UpdateManager(models.Manager):
         return UpdateQuerySet(self.model, using=self._db)
 
 class Update(models.Model):
-    user        =models.ForeignKey(settings.AUTH_USER_MODEL)
+    user        =models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     content     =models.TextField(blank=True, null=True)
     image       =models.ImageField(upload_to=upload_update_image, blank=True, null=True)
     updated     =models.DateTimeField(auto_now=True)
