@@ -24,6 +24,7 @@ from updates.views import (
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/updates/',include('updates.api.urls')), #api/updates --> list, api/updates/2/ --> detail
+    url(r'^api/status/',include('status.api.urls')),
     # url(r'^json/cbv$', JsonCBV.as_view()),
     # url(r'^json/cbv2$', JsonCBV.as_view()),
     # url(r'^json/example/$', json_example_view),
