@@ -28,7 +28,7 @@ def do_img(method='get', data={}, is_json=True, img_path=None):
 
 do_img(
     method='post', 
-    data={'id': 23, 'user': 1, "content": ""}, 
+    data={'user': 1, "content": ""}, 
     is_json=False, 
     img_path=image_path
     )
