@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #third party
     'rest_framework',
     #local
+    'accounts',
     'status',
     'updates',
 ]
@@ -127,3 +128,5 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),'static-server','media-root')
 MEDIA_URL = '/media/'
+
+from cfeapi.restconf.main import *

@@ -1,5 +1,6 @@
 import json
-from rest_framework import generics, mixins
+from rest_framework import generics, mixins,permissions
+from rest_framework.authentication import SessionAuthentication
 from rest_framework.views import APIView
 from rest_framework.response import Response
 # from django.views.generic import View # don't need it now , since rest it is now
@@ -17,8 +18,7 @@ def is_json(json_data):
     return is_valid
 
 class StatusDetailAPIView(mixins.DestroyModelMixin, mixins.UpdateModelMixin,generics.RetrieveAPIView):
-     permission_classes     = []
-     authentication_classes = []
+     permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
      queryset               = Status.objects.all()
      serializer_class       = StatusSerializer
      lookup_field           = 'id' # defualt is pk - toward making our own slug
@@ -37,8 +37,7 @@ class StatusDetailAPIView(mixins.DestroyModelMixin, mixins.UpdateModelMixin,gene
     #     return None
 
 class StatusAPIView(mixins.CreateModelMixin, generics.ListAPIView):
-     permission_classes     = []
-     authentication_classes = []
+     permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
      serializer_class       = StatusSerializer
     
      def get_queryset(self):    
@@ -50,8 +49,8 @@ class StatusAPIView(mixins.CreateModelMixin, generics.ListAPIView):
      def post(self, request,*args, **kwargs):
          return self.create(request, *args, **kwargs)
 
-    # def perform_create(self, serializer):
-    #     serializer.save(user=self.request.user)
+     def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 
