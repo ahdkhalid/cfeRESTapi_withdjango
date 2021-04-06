@@ -3,21 +3,36 @@ import requests
 import os
 
 ENDPOINT = "http://127.0.0.1:8000/api/status/"
-AUTH_ENDPOINT = "http://127.0.0.1:8000/api/auth/"
+AUTH_ENDPOINT = "http://127.0.0.1:8000/api/auth/register/"
 REFRESH_ENDPOINT = AUTH_ENDPOINT+"refresh/"
 image_path = os.path.join(os.getcwd(), "image-example.png")
-
 headers ={
     'content-type':'application/json',
     # 'Authorization': "JWT "+"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjEzNzQ4ODM0LCJlbWFpbCI6ImFoa2hhbGlkLmtoYWxpZEBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYxMzc0ODUzNH0.ptNy8xzho_dvULazh4WroLKYPZb6hT3GnNV_sTvsBtM"
 }
 data = {
-    'username':'ahkhalid.khalid@gmail.com',
-    'password':'Khalid2django'
+    'username':'u9',
+    'email':'ahdkhalid9@yahoo.com',
+    'password':'Khalid2django',
+    'password2':'Khalid2django',
 }
 r = requests.post(AUTH_ENDPOINT,data=json.dumps(data), headers=headers)
 token = r.json()#['token']
 print (token)
+
+
+############## For AuthAPIView test 
+# headers ={
+#     'content-type':'application/json',
+#     # 'Authorization': "JWT "+"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjEzNzQ4ODM0LCJlbWFpbCI6ImFoa2hhbGlkLmtoYWxpZEBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYxMzc0ODUzNH0.ptNy8xzho_dvULazh4WroLKYPZb6hT3GnNV_sTvsBtM"
+# }
+# data = {
+#     'username':'ahkhalid.khalid@gmail.com',
+#     'password':'Khalid2django'
+# }
+# r = requests.post(AUTH_ENDPOINT,data=json.dumps(data), headers=headers)
+# token = r.json()#['token']
+# print (token)
 
 # refresh_data={
 #     'token':token
