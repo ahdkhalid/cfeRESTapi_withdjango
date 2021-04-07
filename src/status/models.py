@@ -27,3 +27,7 @@ class Status(models.Model): #fb status, instagram post, tweet, linkedin post
     class Meta:
         verbose_name = 'Status post'
         verbose_name_plural = 'Status posts'
+
+    @property
+    def owner(self): # for  Is Owner or Read Only Permission class - it uses 'owner' instead of user
+        return self.user

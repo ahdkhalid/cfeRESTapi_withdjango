@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 
 from status.models import Status
 from .serializers import StatusSerializer
+from accounts.api.permissions import IsOwnerOrReadOnly
 
 def is_json(json_data):
     try:
@@ -18,7 +19,7 @@ def is_json(json_data):
     return is_valid
 
 class StatusDetailAPIView(mixins.DestroyModelMixin, mixins.UpdateModelMixin,generics.RetrieveAPIView):
-     permission_classes     = [permissions.IsAuthenticatedOrReadOnly]
+     permission_classes     = [permissions.IsAuthenticatedOrReadOnly,IsOwnerOrReadOnly]
      queryset               = Status.objects.all()
      serializer_class       = StatusSerializer
      lookup_field           = 'id' # defualt is pk - toward making our own slug
