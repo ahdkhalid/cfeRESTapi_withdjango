@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from rest_framework.reverse import reverse as api_reverse
 import datetime
 from django.utils import timezone
 from rest_framework_jwt.settings import api_settings
@@ -20,8 +21,9 @@ class UserPublicSerializer(serializers.ModelSerializer):
             'username',
             'uri'
         ]
-    def get_uri(self,obj):
-        return 'api/user/{id}/'.format(id=obj.id)
+    def get_uri(self, obj):
+        request = self.context.get('request') 
+        return api_reverse("api-user:detail",kwargs={"username":obj.username},request=request)
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     password2           = serializers.CharField(style={'input_type': 'password'}, write_only=True)
