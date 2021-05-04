@@ -24,7 +24,7 @@ from updates.views import (
 )
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/auth/', include('accounts.api.urls')),
+    url(r'^api/auth/', include('accounts.api.urls',namespace='api-auth')),
     url(r'^api/user/', include('accounts.api.user.urls',namespace='api-user')),
     url(r'^api/updates/',include('updates.api.urls')), #api/updates --> list, api/updates/2/ --> detail
     url(r'^api/status/',include('status.api.urls',namespace='api-status')),
