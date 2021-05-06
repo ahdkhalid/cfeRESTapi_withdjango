@@ -10,7 +10,7 @@ from .views import (
 
 
 urlpatterns = [
-    url(r'^$', StatusAPIView.as_view()),
+    url(r'^$', StatusAPIView.as_view(), name='list'),
     url(r'^(?P<id>\d+)/$', StatusDetailAPIView.as_view(),name='detail'),
 
 ]
